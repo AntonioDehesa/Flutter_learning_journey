@@ -10,10 +10,29 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.purple,
-        body: Container(),
+        backgroundColor: Colors.teal,
+        body: SafeArea(
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CircleAvatar(
+                radius: 50.0,
+                backgroundColor: Colors.red,
+                foregroundImage: AssetImage("images/PFP.jpeg"),
+              ),
+              Text(
+                "Antonio Dehesa",
+                style: TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
