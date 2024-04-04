@@ -41,6 +41,30 @@ flutter:
   assets:
     - images/
 
+  fonts:
+    - family: Pacifico
+      fonts:
+        - asset: fonts/Pacifico-Regular.ttf
+    - family: SourceSans3
+      fonts:
+        - asset: fonts/SourceSans3-Black.ttf
+        - asset: fonts/SourceSans3-BlackItalic.ttf
+        - asset: fonts/SourceSans3-Bold.ttf
+        - asset: fonts/SourceSans3-BoldItalic.ttf
+        - asset: fonts/SourceSans3-ExtraBold.ttf
+        - asset: fonts/SourceSans3-ExtraBoldItalic.ttf
+        - asset: fonts/SourceSans3-ExtraLight.ttf
+        - asset: fonts/SourceSans3-ExtraLightItalic.ttf
+        - asset: fonts/SourceSans3-Italic.ttf
+        - asset: fonts/SourceSans3-Italic-VariableFont_wght.ttf
+        - asset: fonts/SourceSans3-Light.ttf
+        - asset: fonts/SourceSans3-LightItalic.ttf
+        - asset: fonts/SourceSans3-Medium.ttf
+        - asset: fonts/SourceSans3-MediumItalic.ttf
+        - asset: fonts/SourceSans3-Regular.ttf
+        - asset: fonts/SourceSans3-SemiBold.ttf
+        - asset: fonts/SourceSans3-SemiBoldItalic.ttf
+        - asset: fonts/SourceSans3-VariableFont_wght.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
