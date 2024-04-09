@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.teal,
         body: SafeArea(
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const CircleAvatar(
                 radius: 50.0,
@@ -39,54 +39,47 @@ class MyApp extends StatelessWidget {
                     color: Colors.greenAccent,
                     fontWeight: FontWeight.w300),
               ),
-              Container(
-                color: Colors.white,
-                margin: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 25.0),
-                padding: const EdgeInsets.all(10.0),
-                child: const Row(
-                  children: [
-                    Icon(
-                      Icons.phone,
-                      size: 50.0,
-                      color: Colors.teal,
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text(
-                      "+52 123 456 789",
-                      style: TextStyle(
-                          color: Colors.teal,
-                          fontFamily: "SourceSans3",
-                          fontSize: 20.0),
-                    )
-                  ],
+              SizedBox(
+                height: 20.0,
+                width: 150.0,
+                child: Divider(
+                  color: Colors.teal.shade100,
                 ),
               ),
-              Container(
+              const Card(
                 color: Colors.white,
-                margin: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 25.0),
-                padding: const EdgeInsets.all(10.0),
-                child: const Row(
-                  children: [
-                    Icon(
-                      Icons.email,
-                      size: 50.0,
-                      color: Colors.teal,
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text(
-                      "my_email@mail.com",
-                      style: TextStyle(
-                          color: Colors.teal,
-                          fontFamily: "SourceSans3",
-                          fontSize: 20.0),
-                    )
-                  ],
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.phone,
+                    size: 50.0,
+                    color: Colors.teal,
+                  ),
+                  title: Text(
+                    "+52 123 456 789",
+                    style: TextStyle(
+                        color: Colors.teal,
+                        fontFamily: "SourceSans3",
+                        fontSize: 20.0),
+                  ),
+                ),
+              ),
+              const Card(
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.email,
+                    size: 50.0,
+                    color: Colors.teal,
+                  ),
+                  title: Text(
+                    "my_email@mail.com",
+                    style: TextStyle(
+                        color: Colors.teal,
+                        fontFamily: "SourceSans3",
+                        fontSize: 20.0),
+                  ),
                 ),
               )
             ],
