@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'quiz_brain.dart';
 
 QuizBrain quizBrain = QuizBrain();
@@ -34,11 +35,35 @@ class QuizPage extends StatefulWidget {
   State<QuizPage> createState() => _QuizPageState();
 }
 
-List<Widget> scoreKeeper = [];
-
-int questionNumber = 0;
-
 class _QuizPageState extends State<QuizPage> {
+  List<Widget> scoreKeeper = [];
+
+  void checkAnswer(bool userPickedAnswer) {
+    if (quizBrain.isFinished() == true) {
+      Alert(
+        context: context,
+        title: 'Finished!',
+        desc: 'You\'ve reached the end of the quiz.',
+      ).show();
+      quizBrain.reset();
+      scoreKeeper = [];
+    } else {
+      if (quizBrain.getQuestionAnswer() == userPickedAnswer) {
+        scoreKeeper.add(const Icon(
+          Icons.check,
+          color: Colors.green,
+        ));
+      } else {
+        scoreKeeper.add(const Icon(
+          Icons.close,
+          color: Colors.red,
+        ));
+      }
+      quizBrain.nextQuestion();
+    }
+  }
+
+  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -73,18 +98,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 // The user picked correctly
                 setState(() {
-                  if (quizBrain.getQuestionAnswer() == true) {
-                    scoreKeeper.add(const Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    ));
-                  } else {
-                    scoreKeeper.add(const Icon(
-                      Icons.close,
-                      color: Colors.red,
-                    ));
-                  }
-                  quizBrain.nextQuestion();
+                  checkAnswer(true);
                 });
               },
               child: const Text("True"),
@@ -102,17 +116,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  if (quizBrain.getQuestionAnswer() == false) {
-                    scoreKeeper.add(const Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    ));
-                  } else {
-                    scoreKeeper.add(const Icon(
-                      Icons.close,
-                      color: Colors.red,
-                    ));
-                  }
+                  checkAnswer(false);
                 });
                 quizBrain.nextQuestion();
               },
