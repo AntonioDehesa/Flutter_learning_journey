@@ -1,8 +1,8 @@
+import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import 'package:flutter/material.dart';
-
-const bottomContainerHeight = 80.0;
-const bottomContainerColor = Color(0xFFEB1555);
-const reusableCardColor = Color(0xFF1D1E33);
+import 'icon_content.dart';
+import 'reusable_card.dart';
+import 'constants.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -21,44 +21,40 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Column(
         children: [
-          Expanded(
+          const Expanded(
               child: Row(
             children: [
-              Expanded(child: ReusableCard()),
-              Expanded(child: ReusableCard())
+              Expanded(
+                  child: IconContent(
+                content: FontAwesomeIcons.mars,
+                label: "MALE",
+              )),
+              Expanded(
+                  child: IconContent(
+                content: FontAwesomeIcons.venus,
+                label: "FEMALE",
+              ))
             ],
           )),
-          Expanded(child: ReusableCard()),
-          Expanded(
+          const Expanded(
+              child: ReusableCard(
+            cardChild: Column(),
+          )),
+          const Expanded(
               child: Row(
             children: [
-              Expanded(child: ReusableCard()),
-              Expanded(child: ReusableCard())
+              Expanded(child: ReusableCard(cardChild: Column())),
+              Expanded(child: ReusableCard(cardChild: Column()))
             ],
           )),
           Container(
             color: bottomContainerColor,
-            margin: EdgeInsets.only(top: 10.0),
+            margin: const EdgeInsets.only(top: 10.0),
             width: double.infinity,
             height: bottomContainerHeight,
           )
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  ReusableCard({super.key, this.color = reusableCardColor});
-
-  Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0), color: color),
     );
   }
 }
