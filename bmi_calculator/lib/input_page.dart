@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import 'package:flutter/material.dart';
 import 'icon_content.dart';
@@ -12,6 +13,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  // It requires to be initialized.
+  Gender selectedGender = Gender.male;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,18 +25,38 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Column(
         children: [
-          const Expanded(
+          Expanded(
               child: Row(
             children: [
               Expanded(
-                  child: IconContent(
-                content: FontAwesomeIcons.mars,
-                label: "MALE",
+                  child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedGender = Gender.male;
+                  });
+                },
+                child: IconContent(
+                  colour: selectedGender == Gender.male
+                      ? reusableCardColor
+                      : inactiveCardColous,
+                  content: FontAwesomeIcons.mars,
+                  label: "MALE",
+                ),
               )),
               Expanded(
-                  child: IconContent(
-                content: FontAwesomeIcons.venus,
-                label: "FEMALE",
+                  child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedGender = Gender.female;
+                  });
+                },
+                child: IconContent(
+                  colour: selectedGender == Gender.female
+                      ? reusableCardColor
+                      : inactiveCardColous,
+                  content: FontAwesomeIcons.venus,
+                  label: "FEMALE",
+                ),
               ))
             ],
           )),

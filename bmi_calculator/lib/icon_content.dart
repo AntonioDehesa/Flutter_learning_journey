@@ -3,14 +3,19 @@ import 'reusable_card.dart';
 import 'constants.dart';
 
 class IconContent extends StatelessWidget {
-  const IconContent({super.key, required this.content, required this.label});
+  const IconContent(
+      {super.key,
+      required this.content,
+      required this.label,
+      this.colour = reusableCardColor});
 
   final IconData content;
   final String label;
-
+  final Color colour;
   @override
   Widget build(BuildContext context) {
     return ReusableCard(
+      color: colour,
       cardChild: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
