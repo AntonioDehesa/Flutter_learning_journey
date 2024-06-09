@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import 'package:flutter/material.dart';
 import 'icon_content.dart';
@@ -24,45 +23,62 @@ class _InputPageState extends State<InputPage> {
         title: const Text("BMI Calculator"),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
               child: Row(
             children: [
               Expanded(
-                  child: GestureDetector(
-                onTap: () {
+                  child: IconContent(
+                onPress: () {
                   setState(() {
                     selectedGender = Gender.male;
                   });
                 },
-                child: IconContent(
-                  colour: selectedGender == Gender.male
-                      ? reusableCardColor
-                      : inactiveCardColous,
-                  content: FontAwesomeIcons.mars,
-                  label: "MALE",
-                ),
+                colour: selectedGender == Gender.male
+                    ? reusableCardColor
+                    : inactiveCardColour,
+                content: FontAwesomeIcons.mars,
+                label: "MALE",
               )),
               Expanded(
-                  child: GestureDetector(
-                onTap: () {
+                  child: IconContent(
+                onPress: () {
                   setState(() {
                     selectedGender = Gender.female;
                   });
                 },
-                child: IconContent(
-                  colour: selectedGender == Gender.female
-                      ? reusableCardColor
-                      : inactiveCardColous,
-                  content: FontAwesomeIcons.venus,
-                  label: "FEMALE",
-                ),
+                colour: selectedGender == Gender.female
+                    ? reusableCardColor
+                    : inactiveCardColour,
+                content: FontAwesomeIcons.venus,
+                label: "FEMALE",
               ))
             ],
           )),
           const Expanded(
               child: ReusableCard(
-            cardChild: Column(),
+            color: reusableCardColor,
+            cardChild: Column(
+              children: [
+                Text("HEIGHT"),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  children: [
+                    Text(
+                      "180",
+                      style: TextStyle(
+                          fontSize: 50.0, fontWeight: FontWeight.w900),
+                    ),
+                    Text(
+                      "CM",
+                      style: TextStyle(
+                          fontSize: 50.0, fontWeight: FontWeight.w900),
+                    )
+                  ],
+                )
+              ],
+            ),
           )),
           const Expanded(
               child: Row(
