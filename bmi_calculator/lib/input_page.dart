@@ -14,6 +14,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   // It requires to be initialized.
   Gender selectedGender = Gender.male;
+  int height = 180;
+  int weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -56,34 +58,69 @@ class _InputPageState extends State<InputPage> {
               ))
             ],
           )),
-          const Expanded(
+          Expanded(
               child: ReusableCard(
             color: reusableCardColor,
             cardChild: Column(
               children: [
-                Text("HEIGHT"),
+                const Text("HEIGHT"),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.baseline,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  textBaseline: TextBaseline.alphabetic,
                   children: [
                     Text(
-                      "180",
-                      style: TextStyle(
+                      height.toString(),
+                      style: const TextStyle(
                           fontSize: 50.0, fontWeight: FontWeight.w900),
                     ),
-                    Text(
+                    const Text(
                       "CM",
-                      style: TextStyle(
-                          fontSize: 50.0, fontWeight: FontWeight.w900),
                     )
                   ],
-                )
+                ),
+                SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                        inactiveTrackColor: Color(0xFF8D8E98),
+                        activeTrackColor: Colors.white,
+                        thumbColor: Color(0xFFEB1555),
+                        overlayColor: Color(0x29EB1555),
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 30.0)),
+                    child: Slider(
+                        value: height.toDouble(),
+                        min: 20.0,
+                        max: 250.0,
+                        inactiveColor: const Color(0xFF8D8E98),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        }))
               ],
             ),
           )),
-          const Expanded(
+          Expanded(
               child: Row(
             children: [
-              Expanded(child: ReusableCard(cardChild: Column())),
+              Expanded(
+                  child: ReusableCard(
+                      color: reusableCardColor,
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "WEIGHT",
+                          ),
+                          Text(
+                            weight.toString(),
+                            style: const TextStyle(
+                                fontSize: 50.0, fontWeight: FontWeight.w900),
+                          )
+                        ],
+                      ))),
               Expanded(child: ReusableCard(cardChild: Column()))
             ],
           )),
