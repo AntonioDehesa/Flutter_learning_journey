@@ -16,6 +16,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
   int height = 180;
   int weight = 60;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -81,14 +82,14 @@ class _InputPageState extends State<InputPage> {
                 ),
                 SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                        inactiveTrackColor: Color(0xFF8D8E98),
+                        inactiveTrackColor: const Color(0xFF8D8E98),
                         activeTrackColor: Colors.white,
-                        thumbColor: Color(0xFFEB1555),
-                        overlayColor: Color(0x29EB1555),
-                        thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        thumbColor: const Color(0xFFEB1555),
+                        overlayColor: const Color(0x29EB1555),
+                        thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 15.0),
                         overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 30.0)),
+                            const RoundSliderOverlayShape(overlayRadius: 30.0)),
                     child: Slider(
                         value: height.toDouble(),
                         min: 20.0,
@@ -118,10 +119,85 @@ class _InputPageState extends State<InputPage> {
                             weight.toString(),
                             style: const TextStyle(
                                 fontSize: 50.0, fontWeight: FontWeight.w900),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RoundIconButton(
+                                onPress: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
+                                child: const Icon(
+                                  FontAwesomeIcons.minus,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
+                              RoundIconButton(
+                                onPress: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
+                                child: const Icon(
+                                  FontAwesomeIcons.plus,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
                           )
                         ],
                       ))),
-              Expanded(child: ReusableCard(cardChild: Column()))
+              Expanded(
+                  child: ReusableCard(
+                      color: reusableCardColor,
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "AGE",
+                          ),
+                          Text(
+                            age.toString(),
+                            style: const TextStyle(
+                                fontSize: 50.0, fontWeight: FontWeight.w900),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RoundIconButton(
+                                onPress: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                },
+                                child: const Icon(
+                                  FontAwesomeIcons.minus,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
+                              RoundIconButton(
+                                onPress: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                                child: const Icon(
+                                  FontAwesomeIcons.plus,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      )))
             ],
           )),
           Container(
@@ -133,5 +209,24 @@ class _InputPageState extends State<InputPage> {
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  const RoundIconButton(
+      {super.key, required this.child, required this.onPress});
+
+  final Widget child;
+  final VoidCallback onPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+        constraints: const BoxConstraints.tightFor(width: 56.0, height: 56.0),
+        shape: const CircleBorder(),
+        elevation: 6.0,
+        fillColor: const Color(0xFF4C4F5E),
+        onPressed: onPress,
+        child: child);
   }
 }
