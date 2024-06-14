@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
+import 'results_page.dart';
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import 'package:flutter/material.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'bottom_button.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -200,12 +203,12 @@ class _InputPageState extends State<InputPage> {
                       )))
             ],
           )),
-          Container(
-            color: bottomContainerColor,
-            margin: const EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: bottomContainerHeight,
-          )
+          BottomButton(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ResultsPage()));
+              },
+              ButtonTittle: 'Calculate')
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
