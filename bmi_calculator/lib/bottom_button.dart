@@ -16,15 +16,15 @@ class BottomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        child: Text(
-          ButtonTittle,
-          style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-        ),
         color: bottomContainerColor,
-        padding: EdgeInsets.only(bottom: 20.0),
+        padding: const EdgeInsets.only(bottom: 20.0),
         margin: const EdgeInsets.only(top: 10.0),
         width: double.infinity,
         height: bottomContainerHeight,
+        child: Text(
+          ButtonTittle,
+          style: const TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
